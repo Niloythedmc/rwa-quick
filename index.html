@@ -34,13 +34,13 @@
 
         /* Hero - Minimal */
         .hero {
-            padding: 110px 20px 160px;
+            padding: 100px 20px 140px;
             text-align: center;
         }
         
         .hero-logo {
-            width: 110px;
-            height: 110px;
+            width: 108px;
+            height: 108px;
             border-radius: 22px;
             margin: 0 auto 28px;
             border: 4px solid rgba(0, 212, 255, 0.12);
@@ -65,7 +65,7 @@
             font-size: 16px;
         }
 
-        /* Floating Button - Minimal */
+        /* Floating Button */
         .fab {
             position: fixed;
             bottom: 30px;
@@ -83,7 +83,6 @@
             border: none;
             cursor: pointer;
             z-index: 200;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
         }
 
         /* Overlay */
@@ -104,10 +103,10 @@
             opacity: 1;
         }
 
-        /* Bottom Sheet - Very Minimal */
+        /* Bottom Sheet */
         #bottomSheet {
             width: 100%;
-            max-width: 520px;
+            max-width: 480px;
             background: #111113;
             border-top-left-radius: 28px;
             border-top-right-radius: 28px;
@@ -150,22 +149,15 @@
             margin-bottom: 34px;
         }
 
-        /* Quick Links - Always horizontal row, responsive */
+        /* Quick Links - Responsive Grid */
         .quick-links {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
             gap: 12px;
-            justify-content: center;
-            overflow-x: auto;
-            padding: 4px 0;
-            scrollbar-width: none;
-        }
-        
-        .quick-links::-webkit-scrollbar {
-            display: none;
+            max-width: 100%;
         }
         
         .quick-link {
-            flex: 0 0 148px;
             background: #1a1a1e;
             border: 1px solid rgba(255,255,255,0.07);
             border-radius: 16px;
@@ -173,7 +165,10 @@
             text-align: center;
             text-decoration: none;
             color: inherit;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .quick-link:hover {
@@ -184,8 +179,8 @@
         .quick-link .icon {
             width: 52px;
             height: 52px;
-            margin: 0 auto 14px;
-            border-radius: 10px;
+            margin-bottom: 14px;
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -209,7 +204,7 @@
             color: #888888;
         }
 
-        /* Footer - Minimal */
+        /* Footer */
         footer {
             padding: 70px 20px 40px;
             text-align: center;
@@ -266,7 +261,7 @@
             <h2 class="sheet-title title-font">Group RWA</h2>
             <p class="sheet-subtitle">Real World Asset</p>
             
-            <!-- Quick Links Row -->
+            <!-- Responsive Grid Quick Links -->
             <div class="quick-links">
                 <!-- Website -->
                 <a href="https://www.group-rwa.com" target="_blank" class="quick-link">
@@ -330,17 +325,14 @@
             }, 400);
         }
         
-        // Close when tapping outside the sheet
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) closeSheet();
         });
         
-        // Auto open when landing via QR code
         window.onload = () => {
             setTimeout(openSheet, 600);
         };
         
-        // Close with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape") closeSheet();
         });
